@@ -6,7 +6,7 @@
 int[,] Generate2DArray(int rowNumber, int colNumber, int deviation)
 {
     int[,] arrayToReturn = new int[rowNumber, colNumber];
-    for (int i = 0; i < colNumber; i++)
+    for (int i = 0; i < rowNumber; i++)
     {
         for (int j = 0; j < colNumber; j++)
         {
