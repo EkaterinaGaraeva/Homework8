@@ -2,6 +2,7 @@
 Задача 62: Заполните спирально массив 4 на 4 (вариант 2)
 */
 
+/*
 int[,] FillingArray(int side)
 {
     int[,] array4x4 = new int[side, side];
@@ -57,6 +58,54 @@ int[,] FillingArray(int side)
     }
     return array4x4;
 }
+*/
+
+int[,] FillingArray(int side)
+{
+    int[,] array4x4 = new int[side, side];
+    int number = 1;
+    for (int k = 0; k < side / 2; k++)
+    {
+        for (int i = side / 2 - k - 1; i < side / 2 - k; i++) // верх
+        {
+            for (int j = side / 2 - k - 1; j < side / 2 + k + 1; j++)
+            {
+                array4x4[i, j] = number++;
+            }
+        }
+
+        for (int i = side / 2 - k; i < side / 2 + k + 1; i++) // право
+        {
+            for (int j = side / 2 + k; j < side / 2 + 1 + k; j++)
+            {
+                array4x4[i, j] = number++;
+            }
+        }
+
+        for (int i = side / 2 + k; i < side / 2 + 1 + k; i++) // низ
+        {
+            for (int j = side / 2 - 1 + k; j > side / 2 - 2 - k; j--)
+            {
+                array4x4[i, j] = number++;
+            }
+        }
+        if (k == side / 2 - 1)
+        {
+            break;
+        }
+        else
+        {
+            for (int i = side / 2 + k; i > side / 2 - 2 - k; i--) // лево
+            {
+                for (int j = side / 2 - 2 - k; j > side / 2 - 3 - k; j--)
+                {
+                    array4x4[i, j] = number++;
+                }
+            }
+        }
+    }
+    return array4x4;
+}
 
 void PrintArray(int[,] incomingArray)
 {
@@ -70,6 +119,6 @@ void PrintArray(int[,] incomingArray)
     }
 }
 
-int[,] array = FillingArray(4);
+int[,] array = FillingArray(8);
 PrintArray(array);
 
